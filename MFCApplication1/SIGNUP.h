@@ -26,4 +26,5 @@ public:
 	BOOL m_Checktea;
 	afx_msg void OnBnClickedCheckstu();
 	CString m_SignType;
+	CString m_spasswordSure;
 };

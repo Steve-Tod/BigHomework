@@ -18,6 +18,7 @@ CSIGNUP::CSIGNUP(CWnd* pParent /*=NULL*/)
 	, m_Checkstu(FALSE)
 	, m_Checktea(FALSE)
 	, m_SignType(_T(""))
+	, m_spasswordSure(_T(""))
 {
 
 }
@@ -32,6 +33,7 @@ void CSIGNUP::DoDataExchange(CDataExchange* pDX)
 	DDX_Text(pDX, IDC_EDIT1, m_susername);
 	DDX_Text(pDX, IDC_EDIT2, m_spassword);
 	DDX_CBString(pDX, IDC_COMBO1, m_SignType);
+	DDX_Text(pDX, IDC_EDIT3, m_spasswordSure);
 }
 
 
@@ -47,19 +49,29 @@ void CSIGNUP::OnBnClickedOk()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	UpdateData(TRUE) ;
-	if (m_susername.GetLength() && m_spassword.GetLength() && m_SignType.GetLength())
+	if (m_susername.GetLength() && m_spassword.GetLength() && m_SignType.GetLength() && m_spasswordSure.GetLength())
 	{
-		writechar(m_susername, "userdata.txt") ;
-		writechar(m_spassword, "userdata.txt") ;
-		if (m_SignType.Compare(_T("老师")) == 0)
+		if (m_spassword.Compare(m_spasswordSure))
 		{
-			writechar(CString("2"), "userdata.txt");
+			MessageBox(L"两次密码不一致！");
+			m_spassword.Empty();
+			m_spasswordSure.Empty();
+			UpdateData(FALSE);
 		}
 		else
 		{
-			writechar(CString("1"), "userdata.txt");
+			writechar(m_susername, "userdata.txt") ;
+			writechar(m_spassword, "userdata.txt") ;
+			if (m_SignType.Compare(_T("老师")) == 0)
+			{
+				writechar(CString("2"), "userdata.txt");
+			}
+			else
+			{
+				writechar(CString("1"), "userdata.txt");
+			}
+			CDialogEx::OnOK();
 		}
-		CDialogEx::OnOK();
 	}
 	else
 	{
