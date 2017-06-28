@@ -1,17 +1,6 @@
-<<<<<<< HEAD
-﻿生成启动时间为 2017/6/28 20:30:58。
+﻿生成启动时间为 2017/6/28 20:46:34。
      1>项目“C:\Users\Tod\Documents\Visual Studio 2012\Projects\MFCApplication1\MFCApplication1\MFCApplication1.vcxproj”在节点 2 上(Build 个目标)。
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\MFCApplication1.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt MFCApplication1Dlg.cpp SIGNUP.cpp
-         SIGNUP.cpp
-         MFCApplication1Dlg.cpp
-         正在生成代码...
-       ResourceCompile:
-=======
-﻿生成启动时间为 2017/6/28 20:17:10。
-     1>项目“C:\Users\Tod\documents\visual studio 2012\Projects\MFCApplication1\MFCApplication1\MFCApplication1.vcxproj”在节点 2 上(Build 个目标)。
      1>ResourceCompile:
->>>>>>> 4e88e12340b794ede110dfb67a666d6693d854ce
          C:\Program Files (x86)\Windows Kits\8.0\bin\x86\rc.exe /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0804" /IDebug\ /nologo /fo"Debug\MFCApplication1.res" MFCApplication1.rc 
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tod\Documents\Visual Studio 2012\Projects\MFCApplication1\Debug\MFCApplication1.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"C:\Users\Tod\Documents\Visual Studio 2012\Projects\MFCApplication1\Debug\MFCApplication1.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tod\Documents\Visual Studio 2012\Projects\MFCApplication1\Debug\MFCApplication1.lib" /MACHINE:X86 Debug\MFCApplication1.res
@@ -31,8 +20,4 @@
 
 生成成功。
 
-<<<<<<< HEAD
-已用时间 00:00:01.92
-=======
-已用时间 00:00:01.45
->>>>>>> 4e88e12340b794ede110dfb67a666d6693d854ce
+已用时间 00:00:01.66
