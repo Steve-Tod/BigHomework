@@ -101,6 +101,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CHANGEPASSWORD.h" />
     <ClInclude Include="EDITSCORE.h" />
     <ClInclude Include="HOMEPAGE.h" />
     <ClInclude Include="memberclass.h" />
@@ -114,6 +115,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CHANGEPASSWORD.cpp" />
     <ClCompile Include="EDITSCORE.cpp" />
     <ClCompile Include="Fileoperation.cpp" />
     <ClCompile Include="HOMEPAGE.cpp" />

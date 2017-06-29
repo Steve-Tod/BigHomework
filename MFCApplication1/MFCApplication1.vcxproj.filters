@@ -51,6 +51,9 @@
     <ClInclude Include="EDITSCORE.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CHANGEPASSWORD.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MFCApplication1.cpp">
@@ -81,6 +84,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="EDITSCORE.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CHANGEPASSWORD.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

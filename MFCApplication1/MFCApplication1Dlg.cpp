@@ -74,6 +74,7 @@ BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &CMFCApplication1Dlg::OnBnClickedOk)
 	ON_BN_CLICKED(IDC_BUTTON2, &CMFCApplication1Dlg::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_CHANGEPASSWORD, &CMFCApplication1Dlg::OnBnClickedChangepassword)
 END_MESSAGE_MAP()
 
 
@@ -200,4 +201,10 @@ BOOL CAboutDlg::OnInitDialog()
 {
 	CDialogEx::OnInitDialog();
 	return TRUE;
+}
+
+
+void CMFCApplication1Dlg::OnBnClickedChangepassword()
+{
+	// TODO: 在此添加控件通知处理程序代码
 }
