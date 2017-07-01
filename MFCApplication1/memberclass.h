@@ -9,11 +9,13 @@ class person //普通人类
 {
 	char username[40] ;
 	char password[40] ;
+	int Type;
 public:
 	person(const char *u, const char *p)
 	{
 		strcpy (username, u) ;
 		strcpy (password, p) ;
+		Type = 0;
 	}
 	person(CString &u, CString &p)
 	{
@@ -25,6 +27,8 @@ public:
 		strcpy (password, p1) ;
 	}
 	void Storetofile(std::ofstream &out);
+	bool ReadtoObj(std::ifstream &in);
+	int ChangePassword(const char* po, const char* pn);
 	bool CheckName(const char* s)
 	{
 		return !strcmp(username, s);
@@ -48,9 +52,7 @@ public:
 class STU: public person
 {
 public:
-	const static int Type = 1;
 	std::vector<Score> sc ;
-
 	STU(const char *u = "", const char *p = ""): person(u, p) {}
 	STU(CString &u, CString &p): person(u, p) {}
 	void Storetofile(std::ofstream &out);//存用户名密码数据

@@ -132,3 +132,49 @@ int DeleteScore(CString &n, CString &t, CString &s, std::vector<STU> &stu)
 	}
 }
 
+bool AvailableLength(CString &s, int min, int max)
+{
+	if (s.GetLength() <= max && s.GetLength() >= min)
+	{
+		return TRUE;
+	}
+	return FALSE;
+}
+
+void readdata(std::vector<person> &Per, const char* strPathName)
+{
+	ifstream in(strPathName, ios::in);
+	Per.clear();
+	Per.push_back(person("", ""));
+	int i = 0;
+	while(Per[i].ReadtoObj(in))
+	{
+		i++;
+		Per.push_back(person("", ""));
+	}
+	Per.pop_back();
+}
+
+int FindUser(const char*s, std::vector<person> &stu)//返回用户在数组中的序号
+{
+	int i = 0;
+	std::vector<person>::iterator iter = stu.begin();
+	for (; iter != stu.end(); iter++, i++)
+	{
+		if (iter->CheckName(s))
+			break;
+	}
+	if (iter == stu.end())
+		return -1;
+	return i;
+}
+
+void DatatoFile(vector<person> &Per, const char* FilePath)
+{
+	ofstream out(FilePath, ios::out);
+	for (vector<person>::iterator iter = Per.begin(); iter != Per.end(); iter++)
+	{
+		iter->Storetofile(out);
+	}
+	out.close();
+}

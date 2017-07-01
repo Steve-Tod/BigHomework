@@ -8,7 +8,7 @@
 #include "SIGNUP.h"
 #include "STUSHOW.h"
 #include "HOMEPAGE.h"
-
+#include "CHANGEPASSWORD.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -207,4 +207,6 @@ BOOL CAboutDlg::OnInitDialog()
 void CMFCApplication1Dlg::OnBnClickedChangepassword()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	CCHANGEPASSWORD *New = new CCHANGEPASSWORD;
+	New->DoModal();
 }

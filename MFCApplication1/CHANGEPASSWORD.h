@@ -23,4 +23,6 @@ public:
 	CString m_PassOld;
 	CString m_PassNew;
 	afx_msg void OnBnClickedOk();
+	virtual BOOL OnInitDialog();
+	afx_msg void OnBnClickedCancel();
 };

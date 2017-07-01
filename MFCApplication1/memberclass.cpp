@@ -5,14 +5,44 @@
 #include <cstring>
 void person::Storetofile(std::ofstream &out)
 {
-	out << username << std::endl << password << std::endl;
+	out << username << std::endl << password << std::endl << Type << std::endl;
+}
+
+bool person::ReadtoObj(std::ifstream &in)
+{
+	in.getline(username, 40);
+	if (in.fail())
+		return FALSE;
+	in.getline(password, 40);
+	in >> Type;
+	in.get();
+	return TRUE;
+}
+
+int person::ChangePassword(const char* po, const char* pn)
+{
+	if (!strcmp(po, password))
+	{
+		if (strcmp(po, pn))
+		{
+			strcpy(password, pn);
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	else 
+	{
+		return -1;
+	}
 }
 
 
 void STU::Storetofile(std::ofstream &out)//用户名密码和Type存入文件
 {
 	person::Storetofile(out) ;
-	out << Type << std::endl ;
 }
 
 void STU::StoreSc(std::ofstream &out)//学号和成绩存入文件
