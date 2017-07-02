@@ -15,7 +15,7 @@
 
 //声明的函数
 int logincheck(CString &a, CString &b) ;
-
+bool AvailableLength(CString &s, int min, int max);
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
 CString  username, password ; //用于存储用户名和密码
 class CAboutDlg : public CDialogEx
@@ -165,26 +165,33 @@ HCURSOR CMFCApplication1Dlg::OnQueryDragIcon()
 
 void CMFCApplication1Dlg::OnBnClickedOk()
 {
-	UpdateData(true) ;
+	UpdateData(TRUE) ;
 	CString utemp = m_username, ptemp = m_password ;
 	int Type = logincheck(utemp, ptemp);
-	if (Type == 1)
+	if (AvailableLength(m_username, 1, 35) && AvailableLength(m_password, 1, 35))
 	{
-		username = m_username ;
-		EndDialog(1) ;
-		CSTUSHOW *stu = new CSTUSHOW;
-		stu->DoModal() ;
-	}
-	else if(Type == 2)
-	{
-		username = m_username ;
-		EndDialog(1) ;
-		CHOMEPAGE *Tea = new CHOMEPAGE;
-		Tea->DoModal();
+		if (Type == 1)
+		{
+			username = m_username ;
+			EndDialog(1) ;
+			CSTUSHOW *stu = new CSTUSHOW;
+			stu->DoModal() ;
+		}
+		else if(Type == 2)
+		{
+			username = m_username ;
+			EndDialog(1) ;
+			CHOMEPAGE *Tea = new CHOMEPAGE;
+			Tea->DoModal();
+		}
+		else
+		{
+			MessageBox(_T("密码或用户名错误！")) ;
+		}
 	}
 	else
 	{
-		MessageBox(_T("密码或用户名错误！"), _T("提示"), MB_OK) ;
+		MessageBox(L"请输入完整信息，且不要超过35个字符！");
 	}
 }
 

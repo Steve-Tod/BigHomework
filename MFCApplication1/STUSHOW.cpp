@@ -12,6 +12,7 @@ extern std::vector<STU> stu;
 extern CString username;
 int FindStu(const char*s, std::vector<STU> &stu);
 int This;
+CRect DlgRect;
 // CSTUSHOW ¶Ô»°¿ò
 
 IMPLEMENT_DYNAMIC(CSTUSHOW, CDialogEx)
@@ -51,7 +52,10 @@ BOOL CSTUSHOW::OnInitDialog()
 	char *s = T2A(username);
 	This = FindStu(s, stu);
 
-	stu[This].GetTerm(m_STUTerm);
+	GetClientRect(DlgRect);
+
+	if (This >= 0)
+		stu[This].GetTerm(m_STUTerm);
 	CStatic *Welcome = new CStatic;
 	CString Wel(_T("»¶Ó­"));
 	Wel += username;
@@ -68,9 +72,10 @@ void CSTUSHOW::OnCbnSelchangeTerm()
 	if (This >=0)
 	{
 		CListCtrl *Sclist = new CListCtrl;
-		Sclist->Create(LVS_REPORT | WS_CHILD | WS_VISIBLE, CRect(40, 110, 350, 400), this, 999);
-		Sclist->InsertColumn(0, _T("Subject"), LVCFMT_LEFT, 155);
-		Sclist->InsertColumn(1, _T("Score"), LVCFMT_LEFT, 155);
+		Sclist->Create(LVS_REPORT | WS_CHILD | WS_VISIBLE, CRect(36, 110, DlgRect.right - 40, DlgRect.bottom - 60), this, 999);
+		int Width = (DlgRect.right - 80) / 2;
+		Sclist->InsertColumn(0, _T("Subject"), LVCFMT_LEFT, Width);
+		Sclist->InsertColumn(1, _T("Score"), LVCFMT_LEFT, Width);
 		CString Sem;
 		m_STUTerm.GetLBText(m_STUTerm.GetCurSel(),Sem);
 		stu[This].SctoList(Sclist, Sem);

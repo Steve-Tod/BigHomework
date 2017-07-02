@@ -7,6 +7,7 @@
 #include "afxdialogex.h"
 
 void writechar(CString &s, const char* strPathName) ;
+bool AvailableLength(CString &s, int min, int max);
 // CSIGNUP 对话框
 
 IMPLEMENT_DYNAMIC(CSIGNUP, CDialogEx)
@@ -49,7 +50,7 @@ void CSIGNUP::OnBnClickedOk()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	UpdateData(TRUE) ;
-	if (m_susername.GetLength() && m_spassword.GetLength() && m_SignType.GetLength() && m_spasswordSure.GetLength())
+	if (AvailableLength(m_susername, 1, 35) && AvailableLength(m_spassword, 1, 35) && AvailableLength(m_SignType, 1, 35) && AvailableLength(m_spasswordSure, 1, 35))
 	{
 		if (m_spassword.Compare(m_spasswordSure))
 		{
@@ -75,7 +76,7 @@ void CSIGNUP::OnBnClickedOk()
 	}
 	else
 	{
-		MessageBox(L"请完整输入您的信息！", L"提示！");
+		MessageBox(L"请完整输入您的信息！且长度不要超过35！", L"提示！");
 	}
 }
 

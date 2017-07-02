@@ -5,19 +5,18 @@
 
 #pragma warning(disable:4996) 
 class STU;
-class person //普通人类
+class User
 {
+public:
 	char username[40] ;
 	char password[40] ;
-	int Type;
-public:
-	person(const char *u, const char *p)
+	int UselessVal;
+	User(const char *u, const char *p)
 	{
 		strcpy (username, u) ;
 		strcpy (password, p) ;
-		Type = 0;
 	}
-	person(CString &u, CString &p)
+	User(CString &u, CString &p)
 	{
 		USES_CONVERSION ;
 		char *u1, *p1 ;
@@ -26,14 +25,39 @@ public:
 		strcpy (username, u1) ;
 		strcpy (password, p1) ;
 	}
+	~User() {}
+	virtual void UselessFun() = 0; //抱歉真的用不到虚基类
+};
+class person: public User //普通人类
+{
+	int Type;
+public:
+	person(const char *u, const char *p): User(u, p)
+	{
+		strcpy (username, u) ;
+		strcpy (password, p) ;
+		Type = 0;
+	}
+	person(CString &u, CString &p): User(u, p)
+	{
+		Type = 0;
+	}
 	void Storetofile(std::ofstream &out);
 	bool ReadtoObj(std::ifstream &in);
 	int ChangePassword(const char* po, const char* pn);
+	bool operator == (person &p)
+	{
+		if (!strcmp(username, p.username) && !strcmp(password, p.password))
+			return TRUE;
+		else
+			return FALSE;
+	}//这个也没用上...
 	bool CheckName(const char* s)
 	{
 		return !strcmp(username, s);
 	}
 	friend void readscore(std::vector<STU> &sc, const char* strPathName);
+	virtual void UselessFun() {}
 } ;
 
 class Score

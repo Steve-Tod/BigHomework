@@ -4,7 +4,7 @@
 #include "memberclass.h"
 using namespace std ;
 
-void writechar(CString &s, const char* strPathName)
+void writechar(CString &s, const char* strPathName)//向文件输出字符串
 {
 	ofstream out(strPathName, ios::app) ;
 	USES_CONVERSION;
@@ -25,10 +25,10 @@ void ScoretoFile(std::vector<STU> &stu, const char* strPathName)//刷新数据
 	out.close();
 }
 
-void readscore(std::vector<STU> &stu, const char* strPathName)
+void readscore(std::vector<STU> &stu, const char* strPathName)//从文件读入成绩
 {
 	ifstream in(strPathName, ios::in);
-	char TermTemp[20], SubTemp[30];
+	char TypeTemp[5], TermTemp[20], SubTemp[30];
 	double ScoreTemp;
 	stu.push_back(STU());
 	for(int i = 0; ; i++)
@@ -40,6 +40,7 @@ void readscore(std::vector<STU> &stu, const char* strPathName)
 			break;
 		}
 		in.getline(stu[i].password, 40);
+		in.getline(TypeTemp, 5);
 		in >> TermTemp;
 		while(TermTemp[0] != '#')
 		{
@@ -89,7 +90,7 @@ int FindStu(const char*s, std::vector<STU> &stu)//返回学生在数组中的序号
 	return i;
 }
 
-void EditScore(CString &n, CString &t, CString &s, double score, std::vector<STU> &stu)
+void EditScore(CString &n, CString &t, CString &s, double score, std::vector<STU> &stu)//改成绩
 {
 	USES_CONVERSION;
 	const char* name = T2A(n);
@@ -108,7 +109,7 @@ void EditScore(CString &n, CString &t, CString &s, double score, std::vector<STU
 		iter->EditScore(term, sub, score); 
 	}
 }
-int DeleteScore(CString &n, CString &t, CString &s, std::vector<STU> &stu)
+int DeleteScore(CString &n, CString &t, CString &s, std::vector<STU> &stu)//删成绩
 {
 	USES_CONVERSION;
 	const char* name = T2A(n);
@@ -132,7 +133,7 @@ int DeleteScore(CString &n, CString &t, CString &s, std::vector<STU> &stu)
 	}
 }
 
-bool AvailableLength(CString &s, int min, int max)
+bool AvailableLength(CString &s, int min, int max)//CString字符串长是否在范围内
 {
 	if (s.GetLength() <= max && s.GetLength() >= min)
 	{
@@ -141,7 +142,7 @@ bool AvailableLength(CString &s, int min, int max)
 	return FALSE;
 }
 
-void readdata(std::vector<person> &Per, const char* strPathName)
+void readdata(std::vector<person> &Per, const char* strPathName)//读用户名密码
 {
 	ifstream in(strPathName, ios::in);
 	Per.clear();
@@ -169,7 +170,7 @@ int FindUser(const char*s, std::vector<person> &stu)//返回用户在数组中的序号
 	return i;
 }
 
-void DatatoFile(vector<person> &Per, const char* FilePath)
+void DatatoFile(vector<person> &Per, const char* FilePath)//输出用户名密码
 {
 	ofstream out(FilePath, ios::out);
 	for (vector<person>::iterator iter = Per.begin(); iter != Per.end(); iter++)

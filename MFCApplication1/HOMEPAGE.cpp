@@ -13,7 +13,9 @@ extern CString username, password ;
 extern std::vector<STU> stu;
 int FindStu(const char*s, std::vector<STU> &stu);
 void ScoretoFile(std::vector<STU> &stu, const char* strPathName);
+bool AvailableLength(CString &s, int min, int max);
 int StuNum;
+CRect TDlgRect;
 // CHOMEPAGE 对话框
 
 IMPLEMENT_DYNAMIC(CHOMEPAGE, CDialogEx)
@@ -54,6 +56,7 @@ BOOL CHOMEPAGE::OnInitDialog()
 	Wel += username;
 	Wel += _T("老师！");
 	Welcome->Create(Wel, WS_CHILD | WS_VISIBLE, CRect(10, 10, 220, 50), this, 997);
+
 	//列表初始化
 	RECT rect;   
 	SclistForTea.GetWindowRect(&rect);   
@@ -68,26 +71,30 @@ void CHOMEPAGE::OnBnClickedSearchstu()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	UpdateData(TRUE);
-
-	USES_CONVERSION;
-	char *s = T2A(m_SearchName);
-
-	StuNum = FindStu(s, stu);
-
-	SclistForTea.DeleteAllItems();
-
-	CListCtrl *List = &SclistForTea;
-	if (StuNum >= 0)
+	if (AvailableLength(m_SearchName, 1, 35))
 	{
-		stu[StuNum].SctoList(List);
+		USES_CONVERSION;
+		char *s = T2A(m_SearchName);
+
+		StuNum = FindStu(s, stu);
+
+		SclistForTea.DeleteAllItems();
+
+		CListCtrl *List = &SclistForTea;
+		if (StuNum >= 0)
+		{
+			stu[StuNum].SctoList(List);
+		}
+		else
+		{
+			MessageBox(_T("查无此人！"), _T("提示"), MB_OK) ;
+		}
 	}
 	else
 	{
-		MessageBox(_T("查无此人！"), _T("提示"), MB_OK) ;
+		MessageBox(L"请输入完整信息，且不要超过35个字符！");
 	}
 }
-
-
 
 void CHOMEPAGE::OnBnClickedButton2()
 {

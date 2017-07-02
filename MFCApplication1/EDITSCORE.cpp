@@ -9,7 +9,7 @@
 extern std::vector<STU> stu;
 void EditScore(CString &n, CString &t, CString &s, double score, std::vector<STU> &stu);
 int DeleteScore(CString &n, CString &t, CString &s, std::vector<STU> &stu);
-void EditScore(CString &n, CString &t, CString &s, double score, std::vector<STU> &stu);
+bool AvailableLength(CString &s, int min, int max);
 // CEDITSCORE 对话框
 
 IMPLEMENT_DYNAMIC(CEDITSCORE, CDialogEx)
@@ -51,7 +51,7 @@ void CEDITSCORE::OnBnClickedOk()
 {
 	// TODO: 在此添加控件通知处理程序代码
 	UpdateData(TRUE);
-	if(m_StuName.GetLength() && m_StuTerm.GetLength() && StuSub.GetLength())
+	if(AvailableLength(m_StuName, 1, 35) && AvailableLength(StuSub, 1, 35) && AvailableLength(m_StuTerm, 1, 35))
 	{
 		EditScore(m_StuName, m_StuTerm, StuSub, m_StuScore, stu);
 		CDialogEx::OnOK();
