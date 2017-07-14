@@ -1,8 +1,10 @@
+#pragma once
 #include "stdafx.h"
 #include "memberclass.h"
 #include <fstream>
 #include <vector>
 #include <cstring>
+#include <algorithm>
 void person::Storetofile(std::ofstream &out)
 {
 	out << username << std::endl << password << std::endl << Type << std::endl;
@@ -39,7 +41,6 @@ int person::ChangePassword(const char* po, const char* pn)
 	}
 }
 
-
 void STU::Storetofile(std::ofstream &out)//用户名密码和Type存入文件
 {
 	person::Storetofile(out) ;
@@ -73,6 +74,7 @@ void STU::SctoList(CListCtrl *List)
 {
 	CString SNumtemp;
 	int i = 0;
+	std::sort(sc.begin(), sc.end());
 	for(std::vector<Score>::iterator iter = sc.begin(); iter != sc.end(); iter++, i++)
 	{
 		List->InsertItem(i, CString(iter->Term));
@@ -130,7 +132,8 @@ int STU::DeleteScore(const char* t, const char* s)
 
 void STU::GetTerm(CComboBox &Term)
 {
-	int size = this->sc.size();
+	int size = sc.size();
+	std::sort(sc.begin(), sc.end());
 	std::vector<char*> AllTerm;
 	for (int i = 0; i < size; i++)
 	{

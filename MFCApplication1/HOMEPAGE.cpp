@@ -23,7 +23,6 @@ IMPLEMENT_DYNAMIC(CHOMEPAGE, CDialogEx)
 CHOMEPAGE::CHOMEPAGE(CWnd* pParent /*=NULL*/): CDialogEx(CHOMEPAGE::IDD, pParent), welcome(NULL)
 , m_SearchName(_T(""))
 {
-	
 }
 
 CHOMEPAGE::~CHOMEPAGE()
@@ -101,6 +100,15 @@ void CHOMEPAGE::OnBnClickedButton2()
 	// TODO: 在此添加控件通知处理程序代码
 	CEDITSCORE NewEdit;
 	NewEdit.DoModal();
+	USES_CONVERSION;
+	char *s = T2A(m_SearchName);
+	StuNum = FindStu(s, stu);
+	SclistForTea.DeleteAllItems();
+	CListCtrl *List = &SclistForTea;
+	if (StuNum >= 0)
+	{
+		stu[StuNum].SctoList(List);
+	}
 }
 
 

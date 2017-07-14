@@ -110,7 +110,7 @@ if (pSysMenu != NULL)
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
-
+	
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 	}
 
@@ -173,16 +173,30 @@ void CMFCApplication1Dlg::OnBnClickedOk()
 		if (Type == 1)
 		{
 			username = m_username ;
-			EndDialog(1) ;
+			this->ShowWindow(SW_HIDE);
 			CSTUSHOW *stu = new CSTUSHOW;
-			stu->DoModal() ;
+			int Res = stu->DoModal();
+			if (Res = IDCANCEL)
+			{
+				m_username.Empty();
+				m_password.Empty();
+				UpdateData(FALSE);
+				this->ShowWindow(SW_SHOW);
+			}
 		}
 		else if(Type == 2)
 		{
 			username = m_username ;
-			EndDialog(1) ;
+			this->ShowWindow(SW_HIDE);
 			CHOMEPAGE *Tea = new CHOMEPAGE;
-			Tea->DoModal();
+			int Res = Tea->DoModal();
+			if (Res = IDCANCEL)
+			{
+				m_username.Empty();
+				m_password.Empty();
+				UpdateData(FALSE);
+				this->ShowWindow(SW_SHOW);
+			}
 		}
 		else
 		{

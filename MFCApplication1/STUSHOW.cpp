@@ -72,7 +72,7 @@ void CSTUSHOW::OnCbnSelchangeTerm()
 	if (This >=0)
 	{
 		CListCtrl *Sclist = new CListCtrl;
-		Sclist->Create(LVS_REPORT | WS_CHILD | WS_VISIBLE, CRect(36, 110, DlgRect.right - 40, DlgRect.bottom - 60), this, 999);
+		Sclist->Create(LVS_REPORT | WS_CHILD | WS_VISIBLE, CRect(36, 110, DlgRect.right - 40, DlgRect.bottom - 80), this, 999);
 		int Width = (DlgRect.right - 80) / 2;
 		Sclist->InsertColumn(0, _T("Subject"), LVCFMT_LEFT, Width);
 		Sclist->InsertColumn(1, _T("Score"), LVCFMT_LEFT, Width);
